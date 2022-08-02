@@ -8,15 +8,36 @@
   </head>
   <body>
     <container>
-      <textarea name="text-area-1" id="ta1" cols="30" rows="10">123</textarea>
-      <textarea name="text-area-2" id="ta2" cols="30" rows="10">345</textarea>
-      <textarea name="text-area-3" id="result" cols="30" rows="10"></textarea>
-      <input type="button" value="Сравнить" onclick="compareArrays()" />
-      <input
-        type="button"
-        value="Очистить"
-        onclick="reset('ta1', 'ta2', 'result')"
-      />
+      <div>
+        <input type="radio" name="tools1" id="" />
+        <label for="tools1">compareArrays</label>
+        <input type="radio" name="tools2" id="" />
+        <label for="tools2">fff</label>
+
+        <input type="button" value="show" onclick="rad2()" />
+        <input type="button" value="hide" onclick="rad1()" />
+
+        <input type="button" value="show1" onclick="rad4()" />
+        <input type="button" value="hide1" onclick="rad3()" />
+      </div>
+
+      <div id="tools1">
+        <textarea name="text-area-1" id="ta1" cols="30" rows="10">123</textarea>
+        <textarea name="text-area-2" id="ta2" cols="30" rows="10">345</textarea>
+        <textarea name="text-area-3" id="result" cols="30" rows="10"></textarea>
+        <input type="button" value="Сравнить" onclick="compareArrays()" />
+        <input
+          type="button"
+          value="Очистить"
+          onclick="reset('ta1', 'ta2', 'result')"
+        />
+      </div>
+
+      <div id="tools2">
+        <textarea name="text-area-1" id="ta3" cols="30" rows="10">123</textarea>
+        <input type="button" value="Обработать" onclick="" />
+        <input type="button" value="Очистить" onclick="reset('ta3')" />
+      </div>
     </container>
     <script src="app.js"></script>
   </body>
