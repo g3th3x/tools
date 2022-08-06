@@ -20,6 +20,30 @@ function rad4() {
   document.getElementById("tools2").style.display = ""; // show
 }
 
+//Разность массивов
+function differenceArray() {
+  let res = "";
+  let arr1 = document
+    .querySelector("#ta1")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  let arr2 = document
+    .querySelector("#ta2")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  else {
+    let diffArray = arr1.filter((x) => !arr2.includes(x));
+    if (diffArray.length > 0) res = "Во втором списке отсутсвуют:\n";
+    diffArray.forEach((element) => {
+      res += `${element}\n`;
+    });
+    if (res == "") res = "Разность не найдена!";
+    return (result.value = res);
+  }
+}
+
+//Симметричная разность массивов
 function symmetricDifferenceArray() {
   let res = "";
   let arr1 = document
@@ -35,6 +59,7 @@ function symmetricDifferenceArray() {
     let symDifference = arr1
       .filter((x) => !arr2.includes(x))
       .concat(arr2.filter((x) => !arr1.includes(x)));
+    if (symDifference.length > 0) res = "Уникальные значения:\n";
     symDifference.forEach((element) => {
       res += `${element}\n`;
     });
@@ -43,6 +68,7 @@ function symmetricDifferenceArray() {
   }
 }
 
+//Сравнение массивов
 function compareArrays() {
   let res = "";
   let arr1 = document
