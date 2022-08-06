@@ -9,7 +9,7 @@
   <body>
     <container>
       <div>
-        <input type="radio" name="tools1" id="" />
+        <input type="radio" name="tools1" id="t1" />
         <label for="tools1">compareArrays</label>
         <input type="radio" name="tools2" id="" />
         <label for="tools2">fff</label>
@@ -22,10 +22,33 @@
       </div>
 
       <div id="tools1">
-        <textarea name="text-area-1" id="ta1" cols="30" rows="10">123</textarea>
-        <textarea name="text-area-2" id="ta2" cols="30" rows="10">345</textarea>
-        <textarea name="text-area-3" id="result" cols="30" rows="10"></textarea>
-        <input type="button" value="Сравнить" onclick="compareArrays()" />
+        <textarea
+          name="text-area-1"
+          id="ta1"
+          cols="30"
+          rows="10"
+          placeholder="Введите данные"
+        ></textarea>
+        <textarea
+          name="text-area-2"
+          id="ta2"
+          cols="30"
+          rows="10"
+          placeholder="Введите данные"
+        ></textarea>
+        <textarea
+          name="text-area-3"
+          id="result"
+          cols="30"
+          rows="10"
+          placeholder="Результат"
+        ></textarea>
+        <input type="button" value="compareArrays" onclick="compareArrays()" />
+        <input
+          type="button"
+          value="symmetricDifferenceArray"
+          onclick="symmetricDifferenceArray()"
+        />
         <input
           type="button"
           value="Очистить"

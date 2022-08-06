@@ -20,13 +20,35 @@ function rad4() {
   document.getElementById("tools2").style.display = ""; // show
 }
 
+function symmetricDifferenceArray() {
+  let res = "";
+  let arr1 = document
+    .querySelector("#ta1")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  let arr2 = document
+    .querySelector("#ta2")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  else {
+    let symDifference = arr1
+      .filter((x) => !arr2.includes(x))
+      .concat(arr2.filter((x) => !arr1.includes(x)));
+    symDifference.forEach((element) => {
+      res += `${element}\n`;
+    });
+    if (res == "") res = "Разность не найдена!";
+    return (result.value = res);
+  }
+}
+
 function compareArrays() {
   let res = "";
   let arr1 = document
     .querySelector("#ta1")
     .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
     .split(/[\n\r]+/);
-
   let arr2 = document
     .querySelector("#ta2")
     .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
@@ -38,9 +60,6 @@ function compareArrays() {
     let inFirst = arr1.filter((x) => !arr2.includes(x));
     let inSecond = arr2.filter((x) => !arr1.includes(x));
     let inBoth = arr1.filter((x) => arr2.includes(x));
-    // console.log(inFirst);
-    // console.log(inSecond);
-    // console.log(inBoth);
     for (let index of inFirst) {
       res += `${index}\tтолько в первом списке\n`;
     }
@@ -59,3 +78,6 @@ function reset(...params) {
     document.getElementById(param).value = "";
   }
 }
+
+let tools = document.querySelector("#t1").value;
+console.log(tools);
