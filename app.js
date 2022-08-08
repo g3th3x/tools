@@ -20,6 +20,28 @@ function rad4() {
   document.getElementById("tools2").style.display = ""; // show
 }
 
+//Объединение массивов
+function unionArray() {
+  let res = "";
+  let arr1 = document
+    .querySelector("#ta1")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  let arr2 = document
+    .querySelector("#ta2")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  else {
+    //let union = [...data1, ...data2]; //Полное объединение
+    let unionArray = [...new Set([...arr1, ...arr2])]; //Только уникальные
+    unionArray.forEach((element) => {
+      res += `${element}\n`;
+    });
+    return (result.value = res);
+  }
+}
+
 //Разность массивов
 function differenceArray() {
   let res = "";
