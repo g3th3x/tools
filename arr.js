@@ -1,23 +1,23 @@
 //Сравнение массивов
 
 function rad1() {
-  document.getElementById("tools1").style.display = "none"; // hide
+  document.querySelector("#tools1").style.display = "none"; // hide
   //document.getElementById("tools1").style.display = ""; // show
 }
 
 function rad2() {
   //document.getElementById("tools1").style.display = "none"; // hide
-  document.getElementById("tools1").style.display = ""; // show
+  document.querySelector("#tools1").style.display = ""; // show
 }
 
 function rad3() {
-  document.getElementById("tools2").style.display = "none"; // hide
+  document.querySelector("#tools2").style.display = "none"; // hide
   //document.getElementById("tools1").style.display = ""; // show
 }
 
 function rad4() {
   //document.getElementById("tools1").style.display = "none"; // hide
-  document.getElementById("tools2").style.display = ""; // show
+  document.querySelector("#tools2").style.display = ""; // show
 }
 
 //Пересечение массивов
@@ -80,7 +80,7 @@ function differenceArray() {
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let diffArray = arr1.filter((x) => !arr2.includes(x));
-    if (diffArray.length > 0) res = "Во втором списке отсутсвуют:\n";
+    if (diffArray.length > 0) res = "Во втором списке отсутствуют:\n";
     diffArray.forEach((element) => {
       res += `${element}\n`;
     });
