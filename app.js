@@ -20,6 +20,29 @@ function rad4() {
   document.getElementById("tools2").style.display = ""; // show
 }
 
+//Пересечение массивов
+function interSectionArray() {
+  let res = "";
+  let arr1 = document
+    .querySelector("#ta1")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  let arr2 = document
+    .querySelector("#ta2")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  else {
+    let interSection = arr1.filter((x) => arr2.includes(x));
+    if (interSection.length > 0) res = "Есть в первом и во втором списке:\n";
+    interSection.forEach((element) => {
+      res += `${element}\n`;
+    });
+    if (res == "") res = "Пересечение не найдено!";
+    return (result.value = res);
+  }
+}
+
 //Объединение массивов
 function unionArray() {
   let res = "";
@@ -35,6 +58,7 @@ function unionArray() {
   else {
     //let union = [...data1, ...data2]; //Полное объединение
     let unionArray = [...new Set([...arr1, ...arr2])]; //Только уникальные
+    if (unionArray.length > 0) res = "Уникальные записи списков:\n";
     unionArray.forEach((element) => {
       res += `${element}\n`;
     });
