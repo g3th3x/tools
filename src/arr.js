@@ -1,25 +1,3 @@
-//Сравнение массивов
-
-function rad1() {
-  document.querySelector("#tools1").style.display = "none"; // hide
-  //document.getElementById("tools1").style.display = ""; // show
-}
-
-function rad2() {
-  //document.getElementById("tools1").style.display = "none"; // hide
-  document.querySelector("#tools1").style.display = ""; // show
-}
-
-function rad3() {
-  document.querySelector("#tools2").style.display = "none"; // hide
-  //document.getElementById("tools1").style.display = ""; // show
-}
-
-function rad4() {
-  //document.getElementById("tools1").style.display = "none"; // hide
-  document.querySelector("#tools2").style.display = ""; // show
-}
-
 //Пересечение массивов
 function interSectionArray() {
   let res = "";
@@ -146,10 +124,8 @@ function compareArrays() {
 }
 
 function reset(...params) {
+  console.log("Yeap! I'm here!");
   for (let param of params) {
     document.getElementById(param).value = "";
   }
 }
-
-let tools = document.querySelector("#t1").value;
-console.log(tools);

@@ -4,94 +4,168 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tools</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="src/arr.js"></script>
+    <script src="src/index.js"></script>
   </head>
   <body>
+    <div class="content">
+      <textarea
+        name="text-area-1"
+        id="ta1"
+        cols="30"
+        rows="10"
+        placeholder="Введите данные"
+      ></textarea>
+      <textarea
+        name="text-area-2"
+        id="ta2"
+        cols="30"
+        rows="10"
+        placeholder="Введите данные"
+      ></textarea>
+      <textarea
+        name="text-area-3"
+        id="result"
+        cols="30"
+        rows="10"
+        placeholder="Результат"
+      ></textarea>
+      <form>
+        <p>Please select function:</p>
+        <div>
+          <label for="radio1">
+            <input type="radio" id="radio1" name="exec" value="1" checked />
+            convSnils9ToChar
+          </label>
+          <label for="radio2">
+            <input type="radio" id="radio2" name="exec" value="2" />
+            convSnilsCharTo9
+          </label>
+          <label for="radio3">
+            <input type="radio" id="radio3" name="exec" value="3" />
+            convSnils11ToChar
+          </label>
+          <label for="radio4">
+            <input type="radio" id="radio4" name="exec" value="4" />
+            validSnils</label
+          >
+          <label for="radio5">
+            <input type="radio" id="radio5" name="exec" value="5" />
+            convPayNumber</label
+          >
+          <label for="radio6">
+            <input type="radio" id="radio6" name="exec" value="6" />
+            unionArray</label
+          >
+          <label for="radio7">
+            <input type="radio" id="radio7" name="exec" value="7" />
+            interSectionArray</label
+          >
+          <label for="radio8">
+            <input type="radio" id="radio8" name="exec" value="8" />
+            differenceArray</label
+          >
+          <label for="radio9">
+            <input type="radio" id="radio9" name="exec" value="9" />
+            compareArrays</label
+          >
+          <label for="radio10">
+            <input type="radio" id="radio10" name="exec" value="10" />
+            symmetricDifferenceArray</label
+          >
+        </div>
+        <div>
+          <input type="submit" value="Обработать" class="create" />
+        </div>
+      </form>
+      <input
+        type="reset"
+        value="Очистить"
+        class="reset"
+        onclick="reset('ta1', 'ta2', 'result')"
+      />
+    </div>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener(
+        "submit",
+        (e) => {
+          const data = new FormData(form);
+          data.forEach((elem) => executor(elem));
+          e.preventDefault();
+        },
+        false
+      );
+
+      function executor(exec) {
+        switch (exec) {
+          case "1":
+            convSnils9ToChar();
+            break;
+          case "2":
+            convSnilsCharTo9();
+            break;
+          case "3":
+            convSnils11ToChar();
+            break;
+          case "4":
+            validSnils();
+            break;
+          case "5":
+            convPayNumber();
+            break;
+          case "6":
+            unionArray();
+            break;
+          case "7":
+            interSectionArray();
+            break;
+          case "8":
+            differenceArray();
+            break;
+          case "9":
+            compareArrays();
+            break;
+          case "10":
+            symmetricDifferenceArray();
+            break;
+        }
+      }
+
+      function supfunction(event) {
+        //     // console.log(`Checked radio with ID = ${event.target.id}`);
+        //     console.log(`Checked radio with ID = ${event.target.value}`);
+        showHide(event.target.value);
+      }
+      document.querySelectorAll("input[name='exec']").forEach((input) => {
+        input.addEventListener("change", supfunction);
+        // input.addEventListener("change", showHide(event.target.value));
+      });
+
+      function showHide(exec) {
+        switch (exec) {
+          case "1":
+          case "2":
+          case "3":
+          case "4":
+          case "5":
+            document.querySelector("#ta2").style.display = "none";
+            break;
+          case "6":
+          case "7":
+          case "8":
+          case "9":
+          case "10":
+            document.querySelector("#ta2").style.display = "";
+            break;
+          default:
+        }
+      }
+    </script>
     <container>
-      <div>
-        <input type="radio" name="tools1" id="t1" />
-        <label for="tools1">compareArrays</label>
-        <input type="radio" name="tools2" id="" />
-        <label for="tools2">fff</label>
-
-        <input type="button" value="show" onclick="rad2()" />
-        <input type="button" value="hide" onclick="rad1()" />
-
-        <input type="button" value="show1" onclick="rad4()" />
-        <input type="button" value="hide1" onclick="rad3()" />
-      </div>
       <div><span id="info"></span></div>
-
-      <div id="tools1">
-        <textarea
-          name="text-area-1"
-          id="ta1"
-          cols="30"
-          rows="10"
-          placeholder="Введите данные"
-        ></textarea>
-        <textarea
-          name="text-area-2"
-          id="ta2"
-          cols="30"
-          rows="10"
-          placeholder="Введите данные"
-        ></textarea>
-        <textarea
-          name="text-area-3"
-          id="result"
-          cols="30"
-          rows="10"
-          placeholder="Результат"
-        ></textarea>
-        <input type="button" value="convPayNumber" onclick="convPayNumber()" />
-        <input
-          type="button"
-          value="convSnils11ToChar"
-          onclick="convSnils11ToChar()"
-        />
-        <input type="button" value="validSnils" onclick="validSnils()" />
-        <input
-          type="button"
-          value="convSnilsCharTo9"
-          onclick="convSnilsCharTo9()"
-        />
-        <input
-          type="button"
-          value="convSnils9ToChar"
-          onclick="convSnils9ToChar()"
-        />
-        <input type="button" value="unionArray" onclick="unionArray()" />
-        <input
-          type="button"
-          value="interSectionArray"
-          onclick="interSectionArray()"
-        />
-        <input
-          type="button"
-          value="differenceArray"
-          onclick="differenceArray()"
-        />
-        <input type="button" value="compareArrays" onclick="compareArrays()" />
-        <input
-          type="button"
-          value="symmetricDifferenceArray"
-          onclick="symmetricDifferenceArray()"
-        />
-        <input
-          type="button"
-          value="Очистить"
-          onclick="reset('ta1', 'ta2', 'result')"
-        />
-      </div>
-
-      <div id="tools2">
-        <textarea name="text-area-1" id="ta3" cols="30" rows="10">123</textarea>
-        <input type="button" value="Обработать" onclick="" />
-        <input type="button" value="Очистить" onclick="reset('ta3')" />
-      </div>
     </container>
-    <script src="arr.js"></script>
-    <script src="pfr.js"></script>
   </body>
 </html>
