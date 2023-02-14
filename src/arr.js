@@ -12,11 +12,13 @@ function interSectionArray() {
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let interSection = arr1.filter((x) => arr2.includes(x));
-    if (interSection.length > 0) res = "Есть в первом и во втором списке:\n";
+    if (interSection.length > 0)
+      res = "Пересечение. Есть в первом и во втором списке:\n";
     interSection.forEach((element) => {
       res += `${element}\n`;
     });
     if (res == "") res = "Пересечение не найдено!";
+    copyToClipboard(res);
     return (result.value = res);
   }
 }
@@ -36,16 +38,41 @@ function unionArray() {
   else {
     //let union = [...data1, ...data2]; //Полное объединение
     let unionArray = [...new Set([...arr1, ...arr2])]; //Только уникальные
-    if (unionArray.length > 0) res = "Уникальные записи списков:\n";
+    if (unionArray.length > 0) res = "Объединение (без повторов)\n";
     unionArray.forEach((element) => {
       res += `${element}\n`;
     });
+    copyToClipboard(res);
     return (result.value = res);
   }
 }
 
-//Разность массивов
-function differenceArray() {
+//Разность массивов (отсутствует справа)
+function differenceArrayRight() {
+  let res = "";
+  let arr1 = document
+    .querySelector("#ta1")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  let arr2 = document
+    .querySelector("#ta2")
+    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
+    .split(/[\n\r]+/);
+  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  else {
+    let diffArray = arr2.filter((x) => !arr1.includes(x));
+    if (diffArray.length > 0) res = "В первом списке отсутствуют:\n";
+    diffArray.forEach((element) => {
+      res += `${element}\n`;
+    });
+    if (res == "") res = "Разность не найдена!";
+    copyToClipboard(res);
+    return (result.value = res);
+  }
+}
+
+//Разность массивов (отсутствует слева)
+function differenceArrayLeft() {
   let res = "";
   let arr1 = document
     .querySelector("#ta1")
@@ -63,6 +90,7 @@ function differenceArray() {
       res += `${element}\n`;
     });
     if (res == "") res = "Разность не найдена!";
+    copyToClipboard(res);
     return (result.value = res);
   }
 }
@@ -88,6 +116,7 @@ function symmetricDifferenceArray() {
       res += `${element}\n`;
     });
     if (res == "") res = "Разность не найдена!";
+    copyToClipboard(res);
     return (result.value = res);
   }
 }
@@ -119,13 +148,7 @@ function compareArrays() {
     for (let index of inBoth) {
       res += `${index}\tв обоих списках\n`;
     }
+    copyToClipboard(res);
     return (result.value = res);
-  }
-}
-
-function reset(...params) {
-  console.log("Yeap! I'm here!");
-  for (let param of params) {
-    document.getElementById(param).value = "";
   }
 }
