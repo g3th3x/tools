@@ -1,103 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tools</title>
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="styles/style.css" />
     <script defer src="src/arr.js"></script>
     <script defer src="src/pfr.js"></script>
     <script defer src="src/index.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="items">
-      <div class="item">
-        <textarea
-          name="text-area-1"
-          id="ta1"
-          cols="30"
-          rows="10"
-          placeholder="Введите данные"
-        ></textarea>
-        <textarea
-          name="text-area-2"
-          id="ta2"
-          cols="30"
-          rows="10"
-          placeholder="Введите данные"
-        ></textarea>
-        <textarea
-          name="text-area-3"
-          id="result"
-          cols="30"
-          rows="10"
-          placeholder="Результат"
-        ></textarea>
-      </div>
-      <div class="item">
-        <form>
-          <p>Please select function:</p>
-          <div>
-            <label for="radio1">
-              <input type="radio" id="radio1" name="exec" value="1" checked />
-              convSnils9ToChar
-            </label>
-            <label for="radio2">
-              <input type="radio" id="radio2" name="exec" value="2" />
-              convSnilsCharTo9
-            </label>
-            <label for="radio3">
-              <input type="radio" id="radio3" name="exec" value="3" />
-              convSnils11ToChar
-            </label>
-            <label for="radio4">
-              <input type="radio" id="radio4" name="exec" value="4" />
-              validSnils</label
-            >
-            <label for="radio5">
-              <input type="radio" id="radio5" name="exec" value="5" />
-              convPayNumber</label
-            >
-            <label for="radio6">
-              <input type="radio" id="radio6" name="exec" value="6" />
-              unionArray</label
-            >
-            <label for="radio7">
-              <input type="radio" id="radio7" name="exec" value="7" />
-              interSectionArray</label
-            >
-            <label for="radio8">
-              <input type="radio" id="radio8" name="exec" value="8" />
-              differenceArrayRight</label
-            >
-            <label for="radio9">
-              <input type="radio" id="radio9" name="exec" value="9" />
-              differenceArrayLeft</label
-            >
-            <label for="radio10">
-              <input type="radio" id="radio10" name="exec" value="10" />
-              compareArrays</label
-            >
-            <label for="radio11">
-              <input type="radio" id="radio11" name="exec" value="11" />
-              symmetricDifferenceArray</label
-            >
-          </div>
-          <div>
-            <input type="submit" value="Обработать" class="create" />
-            <input
-              type="reset"
-              value="Очистить"
-              class="reset"
-              onclick="reset('ta1', 'ta2', 'result')"
-            />
-          </div>
-        </form>
-      </div>
-      <div class="item">
-        <span id="info"></span>
-      </div>
+        <div class="item">
+            <textarea id="ta1" cols="30" rows="10" placeholder="Введите данные"></textarea>
+            <textarea id="ta2" cols="30" rows="10" placeholder="Введите данные"></textarea>
+            <textarea id="result" cols="30" rows="10" placeholder="Результат"></textarea>
+        </div>
+        <div class="item">
+            <form>
+                <p>Please select function:</p>
+                <div>
+                    <label for="radio1">
+                        <input type="radio" id="radio1" name="exec" value="1" checked />
+                        convSnils9ToChar
+                    </label>
+                    <label for="radio2">
+                        <input type="radio" id="radio2" name="exec" value="2" />
+                        convSnilsCharTo9
+                    </label>
+                    <label for="radio3">
+                        <input type="radio" id="radio3" name="exec" value="3" />
+                        convSnils11ToChar
+                    </label>
+                    <label for="radio4">
+                        <input type="radio" id="radio4" name="exec" value="4" />
+                        validSnils
+                    </label>
+                    <label for="radio5">
+                        <input type="radio" id="radio5" name="exec" value="5" />
+                        convPayNumber
+                    </label>
+                    <label for="radio6">
+                        <input type="radio" id="radio6" name="exec" value="6" />
+                        unionArray
+                    </label>
+                    <label for="radio7">
+                        <input type="radio" id="radio7" name="exec" value="7" />
+                        interSectionArray
+                    </label>
+                    <label for="radio8">
+                        <input type="radio" id="radio8" name="exec" value="8" />
+                        differenceArrayRight
+                    </label>
+                    <label for="radio9">
+                        <input type="radio" id="radio9" name="exec" value="9" />
+                        differenceArrayLeft
+                    </label>
+                    <label for="radio10">
+                        <input type="radio" id="radio10" name="exec" value="10" />
+                        compareArrays
+                    </label>
+                    <label for="radio11">
+                        <input type="radio" id="radio11" name="exec" value="11" />
+                        symmetricDifferenceArray
+                    </label>
+                </div>
+                <div>
+                    <input type="submit" value="Обработать" class="create" />
+                    <input type="reset" value="Очистить" class="reset" id="resetBtn" />
+                </div>
+            </form>
+        </div>
+        <div class="item">
+            <span id="info"></span>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
