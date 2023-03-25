@@ -1,0 +1,26 @@
+:root {
+  --color1: #eebb12;
+  --color2: #fff;
+  --color3: #ffca2c;
+  --bg1: #212529;
+  --bg2: #070707;
+}
+
+/* Sections */
+header {
+  padding: 20px 0;
+  background: var(--bg1);
+}
+
+section {
+  padding: 10px 0;
+  background: var(--bg2);
+}
+
+textarea {
+  height: 400px !important;
+}
+
+.gh-btn {
+  width: 100%;
+}

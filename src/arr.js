@@ -1,23 +1,24 @@
+const ta1 = document.querySelector("#textareaOne");
+const ta2 = document.querySelector("#textareaTwo");
+const result = document.querySelector("#textareaThree");
+
+const regReplace = /^[\n\r]+|[\n\r]+$/g;
+const regSplit = /[\n\r]+/;
+
 //Пересечение массивов
 function interSectionArray() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let interSection = arr1.filter((x) => arr2.includes(x));
-    if (interSection.length > 0)
-      res = "Пересечение. Есть в первом и во втором списке:\n";
+    interSection.length > 0
+      ? (res = "Пересечение в первом и во втором списке:\n")
+      : (res = "Пересечение не найдено!");
     interSection.forEach((element) => {
       res += `${element}\n`;
     });
-    if (res == "") res = "Пересечение не найдено!";
     copyToClipboard(res);
     return (result.value = res);
   }
@@ -26,14 +27,8 @@ function interSectionArray() {
 //Объединение массивов
 function unionArray() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     //let union = [...data1, ...data2]; //Полное объединение
@@ -50,22 +45,17 @@ function unionArray() {
 //Разность массивов (отсутствует справа)
 function differenceArrayRight() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let diffArray = arr2.filter((x) => !arr1.includes(x));
-    if (diffArray.length > 0) res = "В первом списке отсутствуют:\n";
+    diffArray.length > 0
+      ? (res = "В первом списке отсутствуют:\n")
+      : (res = "Разность не найдена!");
     diffArray.forEach((element) => {
       res += `${element}\n`;
     });
-    if (res == "") res = "Разность не найдена!";
     copyToClipboard(res);
     return (result.value = res);
   }
@@ -74,22 +64,17 @@ function differenceArrayRight() {
 //Разность массивов (отсутствует слева)
 function differenceArrayLeft() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let diffArray = arr1.filter((x) => !arr2.includes(x));
-    if (diffArray.length > 0) res = "Во втором списке отсутствуют:\n";
+    diffArray.length > 0
+      ? (res = "Во втором списке отсутствуют:\n")
+      : (res = "Разность не найдена!");
     diffArray.forEach((element) => {
       res += `${element}\n`;
     });
-    if (res == "") res = "Разность не найдена!";
     copyToClipboard(res);
     return (result.value = res);
   }
@@ -98,24 +83,19 @@ function differenceArrayLeft() {
 //Симметричная разность массивов
 function symmetricDifferenceArray() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let symDifference = arr1
       .filter((x) => !arr2.includes(x))
       .concat(arr2.filter((x) => !arr1.includes(x)));
-    if (symDifference.length > 0) res = "Уникальные значения:\n";
+    symDifference.length > 0
+      ? (res = "Уникальные значения:\n")
+      : (res = "Разность не найдена!");
     symDifference.forEach((element) => {
       res += `${element}\n`;
     });
-    if (res == "") res = "Разность не найдена!";
     copyToClipboard(res);
     return (result.value = res);
   }
@@ -124,16 +104,8 @@ function symmetricDifferenceArray() {
 //Сравнение массивов
 function compareArrays() {
   let res = "";
-  let arr1 = document
-    .querySelector("#ta1")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  let arr2 = document
-    .querySelector("#ta2")
-    .value.replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  //   console.log(arr1);
-  //   console.log(arr2);
+  let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
+  let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
   if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
   else {
     let inFirst = arr1.filter((x) => !arr2.includes(x));

@@ -1,3 +1,12 @@
+// const ta1 = document.querySelector("#textareaOne");
+// const ta2 = document.querySelector("#textareaTwo");
+// const result = document.querySelector("#textareaThree");
+
+// const regReplace = /^[\n\r]+|[\n\r]+$/g;
+// const regSplit = /[\n\r]+/;
+
+const regSnilsC = /^\d{3}-\d{3}-\d{3} \d{2}$/;
+
 // Алгоритм формирования СНИЛС
 // Шаблон \d{7,9}
 function algoSnils(snils) {
@@ -28,32 +37,23 @@ function algoSnilsCharTo9(snils) {
 
 // Валидатор СНИЛС
 function validSnils() {
-  const arr = document
-    .querySelector("#ta1")
-    .value.trim()
-    .replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  const regexp1 = /^\d{3}-\d{3}-\d{3} \d{2}$/;
-  const regexp2 = /^\d{3}[ -]\d{3}[ -]\d{3}[ -]\d{2}$/;
-  const regexp3 = /^(\d{3})[ -](\d{3})[ -](\d{3})[ -](\d{2})$/;
+  const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
+  const regexp1 = /^\d{3}[ -]\d{3}[ -]\d{3}[ -]\d{2}$/;
+  const regexp2 = /^(\d{3})[ -](\d{3})[ -](\d{3})[ -](\d{2})$/;
   let res = "";
   let chkSnils, corSnils;
   arr.forEach((snils) => {
-    if (regexp1.test(snils)) {
+    if (regSnilsC.test(snils)) {
       chkSnils = algoSnils(parseInt(algoSnilsCharTo9(snils)));
-      if (snils == chkSnils) {
-        res += `${snils}\t${chkSnils}\tОшибок нет\n`;
-      } else {
-        res += `${snils}\t${chkSnils}\tERR: Контрольные суммы\n`;
-      }
-    } else if (regexp2.test(snils)) {
-      corSnils = snils.replace(regexp3, "$1-$2-$3 $4");
+      snils == chkSnils
+        ? (res += `${snils}\t${chkSnils}\tОшибок нет\n`)
+        : (res += `${snils}\t${chkSnils}\tERR: Контрольные суммы\n`);
+    } else if (regexp1.test(snils)) {
+      corSnils = snils.replace(regexp2, "$1-$2-$3 $4");
       chkSnils = algoSnils(parseInt(algoSnilsCharTo9(corSnils)));
-      if (corSnils == chkSnils) {
-        res += `${snils}\t${corSnils}\tWRN: Дефисы или пробелы\n`;
-      } else {
-        res += `${snils}\t${corSnils}\tERR: Дефисы, пробелы и контрольные суммы\n`;
-      }
+      corSnils == chkSnils
+        ? (res += `${snils}\t${corSnils}\tWRN: Дефисы или пробелы\n`)
+        : (res += `${snils}\t${corSnils}\tERR: Дефисы, пробелы и контрольные суммы\n`);
     } else {
       res += `${snils}\t\tERR: Формат СНИЛС\n`;
     }
@@ -64,19 +64,12 @@ function validSnils() {
 
 // Конвертер СНИЛС C -> 9
 function convSnilsCharTo9() {
-  const arr = document
-    .querySelector("#ta1")
-    .value.trim()
-    .replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
-  const regexp = /^\d{3}-\d{3}-\d{3} \d{2}$/;
+  const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
   let res = "";
   for (let snils of arr) {
-    if (regexp.test(snils)) {
-      res += `${algoSnilsCharTo9(snils)}\n`;
-    } else {
-      res += `ERR: Формат СНИЛС (${snils})\n`;
-    }
+    regSnilsC.test(snils)
+      ? (res += `${algoSnilsCharTo9(snils)}\n`)
+      : (res += `ERR: Формат СНИЛС (${snils})\n`);
   }
   copyToClipboard(res);
   return (result.value = res);
@@ -84,19 +77,13 @@ function convSnilsCharTo9() {
 
 // Конвертер СНИЛС 9 -> C
 function convSnils9ToChar() {
-  const arr = document
-    .querySelector("#ta1")
-    .value.trim()
-    .replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
   const regexp = /^\d{7,9}$/;
   let res = "";
   for (let snils of arr) {
-    if (regexp.test(snils)) {
-      res += `${algoSnils(snils)}\n`;
-    } else {
-      res += `ERR: Формат СНИЛС (${snils})\n`;
-    }
+    regexp.test(snils)
+      ? (res += `${algoSnils(snils)}\n`)
+      : (res += `ERR: Формат СНИЛС (${snils})\n`);
   }
   copyToClipboard(res);
   return (result.value = res);
@@ -104,11 +91,7 @@ function convSnils9ToChar() {
 
 // Конвертер СНИЛС 11 -> C
 function convSnils11ToChar() {
-  const arr = document
-    .querySelector("#ta1")
-    .value.trim()
-    .replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
   const regexp1 = /^\d{11}$/;
   const regexp2 = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
   let res = "";
@@ -117,11 +100,9 @@ function convSnils11ToChar() {
     if (regexp1.test(snils)) {
       corSnils = snils.replace(regexp2, "$1-$2-$3 $4");
       chkSnils = algoSnils(parseInt(algoSnilsCharTo9(corSnils)));
-      if (corSnils == chkSnils) {
-        res += `${chkSnils}\n`;
-      } else {
-        res += `${chkSnils}\tERR: Контрольные суммы (${corSnils})\n`;
-      }
+      corSnils == chkSnils
+        ? (res += `${chkSnils}\n`)
+        : (res += `${chkSnils}\tERR: Контрольные суммы (${corSnils})\n`);
     } else {
       res += `${snils}\tERR: Формат СНИЛС\n`;
     }
@@ -132,11 +113,7 @@ function convSnils11ToChar() {
 
 // Конвертер регистрационного номера ПФР
 function convPayNumber() {
-  const arr = document
-    .querySelector("#ta1")
-    .value.trim()
-    .replace(/^[\n\r]+|[\n\r]+$/g, "")
-    .split(/[\n\r]+/);
+  const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
   const regexp1 = /^\d{3}[-]\d{3}[-]\d{6}$/;
   const regexp2 = /^\d{1,3}(?<![0]{3})\d{3}(?<![0]{3})\d{6}$/;
   let corPayNumber;

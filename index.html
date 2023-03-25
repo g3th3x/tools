@@ -6,75 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tools</title>
-    <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script defer src="src/arr.js"></script>
     <script defer src="src/pfr.js"></script>
     <script defer src="src/index.js"></script>
 </head>
 
 <body>
+
+    <header>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="text-center text-uppercase mb-5 text-white">Tools</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="text-areas">
+        <div class="container">
+            <div class="row g-3 mb-3 mt-3 justify-content-center">
+                <div class="col-md-4 col-sm-12 d-flex flex-column">
+                    <div class="form-floating flex-grow-1 d-flex flex-column">
+                        <textarea class="form-control" placeholder="Enter data" id="textareaOne"
+                            style="height: 387px;"></textarea>
+                        <label for="textareaOne">Enter data</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Enter data" id="textareaTwo"></textarea>
+                        <label for="textareaTwo">Enter data</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Result" id="textareaThree"></textarea>
+                        <label for="textareaThree">Result</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="selector">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-8">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">convSnils9ToChar</option>
+                            <option value="2">convSnilsCharTo9</option>
+                            <option value="3">convSnils11ToChar</option>
+                            <option value="4">validSnils</option>
+                            <option value="5">convPayNumber</option>
+                            <option value="6">unionArray</option>
+                            <option value="7">interSectionArray</option>
+                            <option value="8">differenceArrayRight</option>
+                            <option value="9">differenceArrayLeft</option>
+                            <option value="10">compareArrays</option>
+                            <option value="11">symmetricDifferenceArray</option>
+                        </select>
+                        <label for="floatingSelect">Select function</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2 btn-lg gh-btn" type="button"
+                            id="btnHandle">Handle</button>
+                        <button class="btn btn-primary btn-lg gh-btn" type="button" id="btnReset">Reset</button>
+                    </div>
+                </div>
+            </div>
+    </section>
+
     <div class="items">
-        <div class="item">
-            <textarea id="ta1" cols="30" rows="10" placeholder="Введите данные"></textarea>
-            <textarea id="ta2" cols="30" rows="10" placeholder="Введите данные"></textarea>
-            <textarea id="result" cols="30" rows="10" placeholder="Результат"></textarea>
-        </div>
-        <div class="item">
-            <form>
-                <p>Please select function:</p>
-                <div>
-                    <label for="radio1">
-                        <input type="radio" id="radio1" name="exec" value="1" checked />
-                        convSnils9ToChar
-                    </label>
-                    <label for="radio2">
-                        <input type="radio" id="radio2" name="exec" value="2" />
-                        convSnilsCharTo9
-                    </label>
-                    <label for="radio3">
-                        <input type="radio" id="radio3" name="exec" value="3" />
-                        convSnils11ToChar
-                    </label>
-                    <label for="radio4">
-                        <input type="radio" id="radio4" name="exec" value="4" />
-                        validSnils
-                    </label>
-                    <label for="radio5">
-                        <input type="radio" id="radio5" name="exec" value="5" />
-                        convPayNumber
-                    </label>
-                    <label for="radio6">
-                        <input type="radio" id="radio6" name="exec" value="6" />
-                        unionArray
-                    </label>
-                    <label for="radio7">
-                        <input type="radio" id="radio7" name="exec" value="7" />
-                        interSectionArray
-                    </label>
-                    <label for="radio8">
-                        <input type="radio" id="radio8" name="exec" value="8" />
-                        differenceArrayRight
-                    </label>
-                    <label for="radio9">
-                        <input type="radio" id="radio9" name="exec" value="9" />
-                        differenceArrayLeft
-                    </label>
-                    <label for="radio10">
-                        <input type="radio" id="radio10" name="exec" value="10" />
-                        compareArrays
-                    </label>
-                    <label for="radio11">
-                        <input type="radio" id="radio11" name="exec" value="11" />
-                        symmetricDifferenceArray
-                    </label>
-                </div>
-                <div>
-                    <input type="submit" value="Обработать" class="create" />
-                    <input type="reset" value="Очистить" class="reset" id="resetBtn" />
-                </div>
-            </form>
-        </div>
         <div class="item">
             <span id="info"></span>
         </div>

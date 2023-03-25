@@ -1,15 +1,9 @@
-document.querySelector("#ta2").style.display = "none";
+const selectEl = document.querySelector("select");
 
-const form = document.querySelector("form");
-form.addEventListener(
-  "submit",
-  (e) => {
-    const data = new FormData(form);
-    data.forEach((elem) => executor(elem));
-    e.preventDefault();
-  },
-  false
-);
+const btnHandle = document.querySelector("#btnHandle");
+btnHandle.addEventListener("click", () => {
+  executor(selectEl.value);
+});
 
 function executor(exec) {
   switch (exec) {
@@ -49,12 +43,6 @@ function executor(exec) {
   }
 }
 
-document.querySelectorAll("input[name='exec']").forEach((input) => {
-  input.addEventListener("change", (e) => {
-    showHide(e.target.value);
-  });
-});
-
 function showHide(exec) {
   switch (exec) {
     case "1":
@@ -76,8 +64,8 @@ function showHide(exec) {
   }
 }
 
-let resetBtn = document.querySelector("#resetBtn");
-resetBtn.addEventListener("click", () => {
+let btnReset = document.querySelector("#btnReset");
+btnReset.addEventListener("click", () => {
   //   console.log("Yeap! I'm here!");
   let textareaEl = document.querySelectorAll("textarea");
   textareaEl.forEach((elem) => {
