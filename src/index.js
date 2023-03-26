@@ -71,11 +71,12 @@ btnReset.addEventListener("click", () => {
   textareaEl.forEach((elem) => {
     elem.value = "";
   });
-  document.querySelector("#info").textContent = "";
 });
 
 function copyToClipboard(res) {
-  if (window.navigator.clipboard.writeText(res))
-    document.querySelector("#info").textContent =
-      "Результат скопирован в буфер обмена";
+  if (window.navigator.clipboard.writeText(res)) {
+    const liveToastEl = document.querySelector("#liveToast");
+    const toast = new bootstrap.Toast(liveToastEl);
+    toast.show();
+  }
 }
