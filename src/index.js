@@ -1,9 +1,26 @@
 const selectEl = document.querySelector("select");
-
 const btnHandle = document.querySelector("#btnHandle");
+
+const textareaTwo = document.querySelector("#textareaTwo");
+
 btnHandle.addEventListener("click", () => {
   executor(selectEl.value);
 });
+
+selectEl.addEventListener("change", () => {
+  showHide(selectEl.value);
+
+  console.log(typeof selectEl.value);
+  //   console.log("changed");
+});
+
+// function textareaDisabled(element) {
+//     element.classList.add("disabled");
+// }
+
+// function textareaEnabled(element) {
+//   element.classList.remove("disabled");
+// }
 
 function executor(exec) {
   switch (exec) {
@@ -44,13 +61,15 @@ function executor(exec) {
 }
 
 function showHide(exec) {
+  console.log(exec);
   switch (exec) {
     case "1":
     case "2":
     case "3":
     case "4":
     case "5":
-      document.querySelector("#ta2").style.display = "none";
+      textareaTwo.classList.add("disabled");
+      console.log(textareaTwo);
       break;
     case "6":
     case "7":
@@ -58,7 +77,7 @@ function showHide(exec) {
     case "9":
     case "10":
     case "11":
-      document.querySelector("#ta2").style.display = "";
+      textareaTwo.classList.remove("disabled");
       break;
     default:
   }
@@ -66,7 +85,6 @@ function showHide(exec) {
 
 let btnReset = document.querySelector("#btnReset");
 btnReset.addEventListener("click", () => {
-  //   console.log("Yeap! I'm here!");
   let textareaEl = document.querySelectorAll("textarea");
   textareaEl.forEach((elem) => {
     elem.value = "";
