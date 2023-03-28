@@ -1,3 +1,5 @@
+import { copyToClipboard } from "./index.js";
+
 const ta1 = document.querySelector("#textareaOne");
 const ta2 = document.querySelector("#textareaTwo");
 const result = document.querySelector("#textareaThree");
@@ -10,7 +12,7 @@ function interSectionArray() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     let interSection = arr1.filter((x) => arr2.includes(x));
     interSection.length > 0
@@ -29,7 +31,7 @@ function unionArray() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     //let union = [...data1, ...data2]; //Полное объединение
     let unionArray = [...new Set([...arr1, ...arr2])]; //Только уникальные
@@ -47,7 +49,7 @@ function differenceArrayRight() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     let diffArray = arr2.filter((x) => !arr1.includes(x));
     diffArray.length > 0
@@ -66,7 +68,7 @@ function differenceArrayLeft() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     let diffArray = arr1.filter((x) => !arr2.includes(x));
     diffArray.length > 0
@@ -85,13 +87,13 @@ function symmetricDifferenceArray() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     let symDifference = arr1
       .filter((x) => !arr2.includes(x))
       .concat(arr2.filter((x) => !arr1.includes(x)));
     symDifference.length > 0
-      ? (res = "Уникальные значения:\n")
+      ? (res = "Симметрическая разность:\n")
       : (res = "Разность не найдена!");
     symDifference.forEach((element) => {
       res += `${element}\n`;
@@ -106,7 +108,7 @@ function compareArrays() {
   let res = "";
   let arr1 = ta1.value.replace(regReplace, "").split(regSplit);
   let arr2 = ta2.value.replace(regReplace, "").split(regSplit);
-  if (arr1 == "" || arr2 == "") alert("Введите данные для обработки!");
+  if (arr1 == "" || arr2 == "") result.value = "Введите данные для обработки!";
   else {
     let inFirst = arr1.filter((x) => !arr2.includes(x));
     let inSecond = arr2.filter((x) => !arr1.includes(x));
@@ -124,3 +126,12 @@ function compareArrays() {
     return (result.value = res);
   }
 }
+
+export {
+  interSectionArray,
+  unionArray,
+  differenceArrayRight,
+  differenceArrayLeft,
+  symmetricDifferenceArray,
+  compareArrays,
+};
