@@ -13,6 +13,7 @@ function algoSnils(snils) {
   let ksum = 0;
   let i = 9;
   let snils9 = "0000" + snils.toString();
+  
   snils9 = snils9.substring(snils9.length - 9).split("");
   snils9.forEach((element) => {
     ksum += element * i;
@@ -38,12 +39,13 @@ function algoSnilsCharTo9(snils) {
 // Валидатор СНИЛС
 function validSnils() {
   const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
-  if (arr == "") result.value = "Введите данные для обработки!";
-  else {
+  if (arr == "") return result.value = "Введите данные для обработки!";
+
     const regexp1 = /^\d{3}[ -]\d{3}[ -]\d{3}[ -]\d{2}$/;
     const regexp2 = /^(\d{3})[ -](\d{3})[ -](\d{3})[ -](\d{2})$/;
     let res = "";
     let chkSnils, corSnils;
+    
     arr.forEach((snils) => {
       if (regSnilsC.test(snils)) {
         chkSnils = algoSnils(parseInt(algoSnilsCharTo9(snils)));
@@ -60,54 +62,58 @@ function validSnils() {
         res += `${snils}\t\tERR: Формат СНИЛС\n`;
       }
     });
+
     copyToClipboard(res);
-    return (result.value = res);
-  }
+    return result.value = res;
+
 }
 
 // Конвертер СНИЛС C -> 9
 function convSnilsCharTo9() {
   const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
-  if (arr == "") result.value = "Введите данные для обработки!";
-  else {
+  if (arr == "") return result.value = "Введите данные для обработки!";
+  
     let res = "";
-    for (let snils of arr) {
+    
+    arr.forEach(snils => {
       regSnilsC.test(snils)
         ? (res += `${algoSnilsCharTo9(snils)}\n`)
         : (res += `ERR: Формат СНИЛС (${snils})\n`);
-    }
+    })
+
     copyToClipboard(res);
-    return (result.value = res);
-  }
+    return result.value = res;
 }
 
 // Конвертер СНИЛС 9 -> C
 function convSnils9ToChar() {
   const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
-  if (arr == "") result.value = "Введите данные для обработки!";
-  else {
+  if (arr == "") return result.value = "Введите данные для обработки!";
+  
     const regexp = /^\d{7,9}$/;
     let res = "";
-    for (let snils of arr) {
+
+    arr.forEach(snils => {
       regexp.test(snils)
         ? (res += `${algoSnils(snils)}\n`)
         : (res += `ERR: Формат СНИЛС (${snils})\n`);
-    }
+    })
+
     copyToClipboard(res);
-    return (result.value = res);
-  }
+    return result.value = res;
 }
 
 // Конвертер СНИЛС 11 -> C
 function convSnils11ToChar() {
   const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
-  if (arr == "") result.value = "Введите данные для обработки!";
-  else {
+  if (arr == "") return result.value = "Введите данные для обработки!";
+ 
     const regexp1 = /^\d{11}$/;
     const regexp2 = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
     let res = "";
     let chkSnils, corSnils;
-    for (let snils of arr) {
+
+    arr.forEach(snils => {
       if (regexp1.test(snils)) {
         corSnils = snils.replace(regexp2, "$1-$2-$3 $4");
         chkSnils = algoSnils(parseInt(algoSnilsCharTo9(corSnils)));
@@ -117,22 +123,23 @@ function convSnils11ToChar() {
       } else {
         res += `${snils}\tERR: Формат СНИЛС\n`;
       }
-    }
+    })
+    
     copyToClipboard(res);
-    return (result.value = res);
-  }
+    return result.value = res;
 }
 
 // Конвертер регистрационного номера ПФР
 function convPayNumber() {
   const arr = ta1.value.trim().replace(regReplace, "").split(regSplit);
-  if (arr == "") result.value = "Введите данные для обработки!";
-  else {
-    const regexp1 = /^\d{3}[-]\d{3}[-]\d{6}$/;
+  if (arr == "") return result.value = "Введите данные для обработки!";
+
+    const regexp1 = /^\d{3}\-\d{3}\-\d{6}$/; // Регистрационный номер 123-123-123456
     const regexp2 = /^\d{1,3}(?<![0]{3})\d{3}(?<![0]{3})\d{6}$/;
     let corPayNumber;
     let res = "";
-    for (let payNumber of arr) {
+    
+    arr.forEach(payNumber => {
       if (regexp1.test(payNumber)) {
         res += `${payNumber}\t${payNumber}\n`;
       } else if (regexp2.test(payNumber)) {
@@ -143,10 +150,10 @@ function convPayNumber() {
       } else {
         res += `${payNumber}\tERR: Нарушен формат входящих данных\n`;
       }
-    }
+    })
+
     copyToClipboard(res);
-    return (result.value = res);
-  }
+    return result.value = res;
 }
 
 export {

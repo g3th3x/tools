@@ -13,3 +13,5 @@
 - differenceArrayLeft
 - compareArrays
 - symmetricDifferenceArray
+- dateRuToEn
+- dateEnToRu

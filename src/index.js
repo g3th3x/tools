@@ -1,13 +1,16 @@
 import * as arrayTools from "./array-tools.js";
 import * as pfrTools from "./pfr-tools.js";
+import * as tools from "./tools.js";
 
 const selectEl = document.querySelector("select");
 const textareaTwo = document.querySelector("#textareaTwo");
 const btnReset = document.querySelector("#btnReset");
 const btnHandle = document.querySelector("#btnHandle");
 
+const areaTwoHide = [1, 2, 3, 4, 5, 6, 12, 13];
+
 selectEl.addEventListener("change", () => {
-  selectEl.value > 0 && selectEl.value < 6
+  areaTwoHide.includes(+selectEl.value)
     ? textareaTwo.setAttribute("disabled", true)
     : textareaTwo.removeAttribute("disabled");
 });
@@ -32,6 +35,8 @@ btnHandle.addEventListener("click", () => {
     arrayTools.differenceArrayLeft,
     arrayTools.compareArrays,
     arrayTools.symmetricDifferenceArray,
+    tools.dateRuToEn,
+    tools.dateEnToRu
   ];
 
   const index = Number(selectEl.value) - 1;
