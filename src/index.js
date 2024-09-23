@@ -1,13 +1,14 @@
 import * as arrayTools from "./array-tools.js";
 import * as pfrTools from "./pfr-tools.js";
 import * as tools from "./tools.js";
+import * as hexLetter from "./hex-letter.js";
 
 const selectEl = document.querySelector("select");
 const textareaTwo = document.querySelector("#textareaTwo");
 const btnReset = document.querySelector("#btnReset");
 const btnHandle = document.querySelector("#btnHandle");
 
-const areaTwoHide = [1, 2, 3, 4, 5, 6, 12, 13];
+const areaTwoHide = [1, 2, 3, 4, 5, 6, 12, 13, 14];
 
 selectEl.addEventListener("change", () => {
   areaTwoHide.includes(+selectEl.value)
@@ -36,7 +37,8 @@ btnHandle.addEventListener("click", () => {
     arrayTools.compareArrays,
     arrayTools.symmetricDifferenceArray,
     tools.dateRuToEn,
-    tools.dateEnToRu
+    tools.dateEnToRu,
+    hexLetter.hexLetterConverter,
   ];
 
   const index = Number(selectEl.value) - 1;
